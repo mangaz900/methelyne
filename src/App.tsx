@@ -36,6 +36,13 @@ const MethyleneBlueQuiz = () => {
     }
   };
 
+  // Facebook Pixel Tracking
+  const trackFacebookEvent = (eventName: string, parameters: Record<string, any> = {}) => {
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', eventName, parameters);
+    }
+  };
+
   const getAllQuestions = () => {
     let questions = [
       {
@@ -451,6 +458,15 @@ const MethyleneBlueQuiz = () => {
           
           // Track quiz completion
           trackEvent('quiz_completed', {
+            total_questions: getAllQuestions().length,
+            answers_count: Object.keys(answers).length
+          });
+
+          // Facebook Pixel: CompleteRegistration event
+          trackFacebookEvent('CompleteRegistration', {
+            content_name: 'Methylene Blue Quiz',
+            content_category: 'Health Assessment',
+            quiz_severity: severity,
             total_questions: getAllQuestions().length,
             answers_count: Object.keys(answers).length
           });
@@ -1063,7 +1079,16 @@ const MethyleneBlueQuiz = () => {
                             <a
                               href="https://methyleneblueco.com/products/ultra-pure-methylene-blue-gummies"
                               className="block w-full"
-                              onClick={() => trackEvent('cta_clicked', { button: 'yes_main', cta_text: 'Claim My 50% OFF' })}
+                              onClick={() => {
+                                trackEvent('cta_clicked', { button: 'yes_main', cta_text: 'Claim My 50% OFF' });
+                                trackFacebookEvent('AddToWishlist', {
+                                  content_name: 'Methylene Blue Quiz CTA',
+                                  content_category: 'Health Assessment',
+                                  quiz_severity: severity,
+                                  button_clicked: 'yes_main',
+                                  cta_text: 'Claim My 50% OFF'
+                                });
+                              }}
                             >
                               <button className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-bold py-3 sm:py-4 px-4 sm:px-8 rounded-xl text-lg sm:text-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                                 ✅ YES - Claim My 50% OFF (Limited Time) →

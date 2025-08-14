@@ -452,10 +452,10 @@ const MethyleneBlueQuiz = () => {
   if (currentStep === 'hero') {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-        <div className="max-w-4xl mx-auto px-6 py-16">
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/20">
-          <div className="text-center mb-8">
-            <div className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-16">
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 sm:p-10 shadow-2xl border border-white/20">
+          <div className="text-center mb-6 sm:mb-8">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4 overflow-hidden">
               <img 
                 src="https://cdn.shopify.com/s/files/1/0965/1824/2645/files/dr_chen.jpg?v=1755129328" 
                 alt="Dr. Michael Chen - Brain Wellness Specialist"
@@ -467,11 +467,11 @@ const MethyleneBlueQuiz = () => {
             </p>
           </div>
 
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+          <div className="text-center mb-8 sm:mb-12">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
               Struggling with brain fog and mental fatigue?
             </h1>
-            <h2 className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto">
+            <h2 className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto">
               Get your personalized cognitive wellness assessment and discover what's really causing your symptoms - <span className="text-green-500 font-semibold">free analysis</span>.
             </h2>
 
@@ -480,22 +480,22 @@ const MethyleneBlueQuiz = () => {
                 trackEvent('quiz_started', { step: 'hero_button' });
                 setCurrentStep('quiz');
               }}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-colors duration-200 shadow-lg flex items-center mx-auto"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg text-lg sm:text-xl transition-colors duration-200 shadow-lg flex items-center mx-auto"
             >
               Start Assessment
-              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
           </div>
 
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-10 mb-8 shadow-2xl border border-white/20">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 sm:p-10 mb-6 sm:mb-8 shadow-2xl border border-white/20">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">
               Your expert for <span className="text-blue-600">cognitive wellness</span>.
             </h3>
 
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-xl ring-4 ring-white">
+            <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-8">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-xl ring-4 ring-white">
                 <img 
                   src="https://cdn.shopify.com/s/files/1/0965/1824/2645/files/dr_chen.jpg?v=1755129328" 
                   alt="Dr. Michael Chen - Brain Wellness Specialist"
@@ -504,22 +504,22 @@ const MethyleneBlueQuiz = () => {
               </div>
 
               <div className="flex-1 text-center md:text-left">
-                <h4 className="text-xl font-bold text-gray-900 mb-2">Michael Chen</h4>
-                <p className="text-blue-600 font-medium mb-4">Brain Wellness Specialist</p>
-                <p className="text-gray-700 leading-relaxed">
+                <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Michael Chen</h4>
+                <p className="text-blue-600 font-medium mb-3 sm:mb-4">Brain Wellness Specialist</p>
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
                   Helping people optimize cognitive performance for over 10 years. Whether you're struggling with brain fog, memory issues, or mental fatigue, I'm here to guide you through understanding what's really happening and find the right solution for your specific situation.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="text-center mb-8">
+          <div className="text-center mb-6 sm:mb-8">
             <button
               onClick={() => setCurrentStep('quiz')}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-colors duration-200 shadow-lg flex items-center mx-auto"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg text-lg sm:text-xl transition-colors duration-200 shadow-lg flex items-center mx-auto"
             >
               Get Assessment
-              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -1055,7 +1055,7 @@ const MethyleneBlueQuiz = () => {
                               className="block w-full"
                               onClick={() => trackEvent('cta_clicked', { button: 'yes_main', cta_text: 'Claim My 50% OFF' })}
                             >
-                              <button className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl text-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                              <button className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-bold py-3 sm:py-4 px-4 sm:px-8 rounded-xl text-lg sm:text-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                                 ✅ YES - Claim My 50% OFF (Limited Time) →
                               </button>
                             </a>
@@ -1067,8 +1067,8 @@ const MethyleneBlueQuiz = () => {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4 border border-blue-200">
-                <div className="flex items-center justify-center gap-4 text-sm text-blue-700">
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3 sm:p-4 border border-blue-200">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-blue-700">
                   <span className="flex items-center"><span className="mr-1">✓</span> Hospital Quality</span>
                   <span className="flex items-center"><span className="mr-1">✓</span> Third-Party Tested</span>
                   <span className="flex items-center"><span className="mr-1">✓</span> Money-Back Guarantee</span>
@@ -1080,7 +1080,7 @@ const MethyleneBlueQuiz = () => {
                   trackEvent('cta_clicked', { button: 'no_thanks', cta_text: 'No thanks' });
                   setShowNoThanksPopup(true);
                 }}
-                className="w-full bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 text-gray-600 font-medium py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105"
+                className="w-full bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 text-gray-600 font-medium py-2.5 sm:py-3 px-4 sm:px-8 rounded-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
               >
                 No thanks, I'll keep suffering while Big Pharma profits
               </button>
@@ -1088,28 +1088,28 @@ const MethyleneBlueQuiz = () => {
               {/* No Thanks Popup */}
               {showNoThanksPopup && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                  <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
+                  <div className="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full mx-4 shadow-2xl">
                     <div className="text-center">
-                      <h3 className="text-xl font-bold text-gray-800 mb-4">We Get It - You Want Proof First</h3>
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-4">We Get It - You Want Proof First</h3>
                       
-                      <p className="text-gray-700 mb-6">
+                      <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">
                         Before you spend money on ANOTHER supplement that might not work, 
                         read this breakthrough research about why your brain feels broken.
                       </p>
 
                       <a
                         href="https://methyleneblueco.com/pages/blogg"
-                        className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 mb-4"
+                        className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-xl transition-all duration-300 transform hover:scale-105 mb-4 text-sm sm:text-base"
                         onClick={() => trackEvent('popup_interaction', { action: 'blog_link_clicked', link_text: 'The Hidden Energy Crisis Destroying Your Brain' })}
                       >
                         → "The Hidden Energy Crisis Destroying Your Brain"
                       </a>
                       
-                      <p className="text-blue-600 text-sm mb-6">(5-minute read that explains everything)</p>
+                      <p className="text-blue-600 text-xs sm:text-sm mb-4 sm:mb-6">(5-minute read that explains everything)</p>
 
                       <div className="text-left">
-                        <p className="text-gray-700 font-medium mb-3">After reading, you'll understand:</p>
-                        <div className="space-y-2 text-sm text-gray-600">
+                        <p className="text-gray-700 font-medium mb-2 sm:mb-3 text-sm sm:text-base">After reading, you'll understand:</p>
+                        <div className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-gray-600">
                           <div className="flex items-center"><span className="mr-2 text-green-500">✓</span> Why coffee stopped working</div>
                           <div className="flex items-center"><span className="mr-2 text-green-500">✓</span> Why this isn't "just aging"</div>
                           <div className="flex items-center"><span className="mr-2 text-green-500">✓</span> Why 73% of online solutions are fake</div>
@@ -1119,7 +1119,7 @@ const MethyleneBlueQuiz = () => {
 
                       <button
                         onClick={() => setShowNoThanksPopup(false)}
-                        className="mt-6 w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-3 px-6 rounded-xl transition-all duration-300"
+                        className="mt-4 sm:mt-6 w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-xl transition-all duration-300 text-sm sm:text-base"
                       >
                         Close
                       </button>
@@ -1145,8 +1145,8 @@ const MethyleneBlueQuiz = () => {
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 p-4">
         <div className="max-w-2xl mx-auto">
           {/* Profile Image */}
-          <div className="text-center mb-8">
-            <div className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden shadow-xl ring-4 ring-white">
+          <div className="text-center mb-6 sm:mb-8">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full mx-auto mb-4 overflow-hidden shadow-xl ring-4 ring-white">
               <img 
                 src="https://cdn.shopify.com/s/files/1/0965/1824/2645/files/dr_chen.jpg?v=1755129328" 
                 alt="Dr. Michael Chen - Brain Wellness Specialist"
@@ -1156,12 +1156,12 @@ const MethyleneBlueQuiz = () => {
           </div>
 
           {/* Progress Indicator */}
-          <div className="mb-8">
+          <div className="mb-6 sm:mb-8">
             <div className="flex justify-center space-x-1 mb-4 flex-wrap max-w-md mx-auto">
               {Array.from({ length: questions.length }, (_, i) => (
                 <div
                   key={i}
-                  className={`w-3 h-3 rounded-sm transition-all duration-300 ${
+                  className={`w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-3 md:h-3 rounded-sm transition-all duration-300 ${
                     i <= questionIndex
                       ? 'bg-blue-600'
                       : 'bg-gray-300'
@@ -1172,36 +1172,36 @@ const MethyleneBlueQuiz = () => {
           </div>
 
           {/* Question Container */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/20 p-10">
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/20 p-6 sm:p-10">
             {currentQuestion.type === 'question' ? (
               <>
-                <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">{currentQuestion.title}</h2>
-                {currentQuestion.subtitle && <p className="text-gray-600 mb-8 text-center text-lg">{currentQuestion.subtitle}</p>}
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">{currentQuestion.title}</h2>
+                {currentQuestion.subtitle && <p className="text-gray-600 mb-6 sm:mb-8 text-center text-base sm:text-lg">{currentQuestion.subtitle}</p>}
 
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {currentQuestion.options.map((option: string, index: number) => (
                     <button
                       key={index}
                       onClick={() => handleAnswer((currentQuestion as any).id, option)}
-                      className="w-full text-left p-6 rounded-2xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 bg-white shadow-sm hover:shadow-md"
+                      className="w-full text-left p-4 sm:p-6 rounded-2xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 bg-white shadow-sm hover:shadow-md"
                     >
-                      <span className="text-gray-800 font-medium text-lg">{option}</span>
+                      <span className="text-gray-800 font-medium text-base sm:text-lg">{option}</span>
                     </button>
                   ))}
                 </div>
               </>
             ) : (
-              <div className={`${(currentQuestion as any).bgColor} rounded-2xl p-8 text-center`}>
-                <h2 className={`text-2xl font-bold ${(currentQuestion as any).textColor} mb-6`}>
+              <div className={`${(currentQuestion as any).bgColor} rounded-2xl p-6 sm:p-8 text-center`}>
+                <h2 className={`text-xl sm:text-2xl font-bold ${(currentQuestion as any).textColor} mb-4 sm:mb-6`}>
                   {(currentQuestion as any).title}
                 </h2>
-                <p className={`${(currentQuestion as any).textColor} text-lg leading-relaxed mb-8`}>
+                <p className={`${(currentQuestion as any).textColor} text-base sm:text-lg leading-relaxed mb-6 sm:mb-8`}>
                   {(currentQuestion as any).content}
                 </p>
                 
                 {/* Brain Energy Image */}
                 {(currentQuestion as any).title === '🧠 Your Brain Uses Tons of Energy' && (
-                  <div className="mb-8">
+                  <div className="mb-6 sm:mb-8">
                     <img 
                       src="https://cdn.shopify.com/s/files/1/0965/1824/2645/files/20_batteri_brain.jpg?v=1755131090"
                       alt="Brain using 20% of energy - battery visualization"
@@ -1212,10 +1212,10 @@ const MethyleneBlueQuiz = () => {
                 
                 <button 
                   onClick={nextStep} 
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center mx-auto"
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center mx-auto"
                 >
                   Continue
-                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>

@@ -38,8 +38,14 @@ const MethyleneBlueQuiz = () => {
 
   // Facebook Pixel Tracking
   const trackFacebookEvent = (eventName: string, parameters: Record<string, any> = {}) => {
+    console.log('🔍 Facebook Event:', eventName, parameters);
+    console.log('🔍 fbq exists?', typeof window !== 'undefined' && (window as any).fbq);
+    
     if (typeof window !== 'undefined' && (window as any).fbq) {
+      console.log('✅ Sending Facebook event:', eventName);
       (window as any).fbq('track', eventName, parameters);
+    } else {
+      console.log('❌ Facebook Pixel not found');
     }
   };
 
@@ -462,15 +468,22 @@ const MethyleneBlueQuiz = () => {
             answers_count: Object.keys(answers).length
           });
 
-          // Facebook Pixel: CompleteRegistration event
-          trackFacebookEvent('CompleteRegistration', {
+          // Facebook Pixel: Custom quiz_completed event
+          console.log('🔍 About to send quiz_completed event...');
+          console.log('🔍 Current severity:', severity);
+          console.log('🔍 Total questions:', getAllQuestions().length);
+          console.log('🔍 Answers count:', Object.keys(answers).length);
+          
+          trackFacebookEvent('quiz_completed', {
             content_name: 'Methylene Blue Quiz',
             content_category: 'Health Assessment',
             quiz_severity: severity,
             total_questions: getAllQuestions().length,
             answers_count: Object.keys(answers).length
           });
-        }, 1000);
+          
+          console.log('✅ quiz_completed event sent!');
+        }, 2000); // Increased from 1000ms to 2000ms
       }
     }, 1500);
   };
@@ -626,7 +639,7 @@ const MethyleneBlueQuiz = () => {
         <div className="max-w-4xl mx-auto">
                   <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8">
           {/* 1. SUMMARY SECTION */}
-          <div className="text-center mb-8">
+            <div className="text-center mb-8">
             <div className="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-bold mb-4">
               <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path
@@ -663,34 +676,34 @@ const MethyleneBlueQuiz = () => {
                       />
                     </svg>
                   </div>
-                </div>
+                  </div>
 
-                <h2
+                    <h2
                   className={`text-lg sm:text-xl md:text-2xl font-bold ${
-                    severity === 'VERY BAD'
-                      ? 'text-red-500'
-                      : severity === 'BAD'
-                      ? 'text-orange-500'
-                      : 'text-yellow-600'
-                  }`}
-                >
+                        severity === 'VERY BAD'
+                          ? 'text-red-500'
+                          : severity === 'BAD'
+                          ? 'text-orange-500'
+                          : 'text-yellow-600'
+                      }`}
+                    >
                   {severity}
-                </h2>
+                    </h2>
                 <p className="text-gray-600 text-xs sm:text-sm px-2 sm:px-0">
-                  {severity === 'VERY BAD'
-                    ? 'Urgent intervention needed'
-                    : severity === 'BAD'
-                    ? 'Serious but fixable'
+                      {severity === 'VERY BAD'
+                        ? 'Urgent intervention needed'
+                        : severity === 'BAD'
+                        ? 'Serious but fixable'
                     : severity === 'NOT GOOD'
                     ? 'Manageable with right approach - but can get much worse if not treated'
                     : 'Can get much worse if not treated - act now while it\'s still easy to fix'}
-                </p>
-              </div>
+                    </p>
+                  </div>
 
               {/* Stats Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                </div>
               </div>
-            </div>
 
 
 
@@ -909,14 +922,14 @@ const MethyleneBlueQuiz = () => {
               >
                 <h3 className="text-lg font-semibold text-blue-800 flex items-center">
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  How Your "Backup Generator" Works
-                </h3>
+                  <path
+                    fillRule="evenodd"
+                    d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                How Your "Backup Generator" Works
+              </h3>
                 <svg 
                   className={`w-5 h-5 text-blue-600 transition-transform ${accordionOpen.howItWorks ? 'rotate-180' : ''}`} 
                   fill="currentColor" 
@@ -928,32 +941,32 @@ const MethyleneBlueQuiz = () => {
               
               {accordionOpen.howItWorks && (
                 <div className="px-6 pb-6">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="text-center">
                       <div className="w-16 h-16 bg-gradient-to-r from-red-100 to-red-200 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span className="text-2xl">🔋</span>
-                      </div>
-                      <h4 className="font-medium text-gray-800 mb-2">Your Problem</h4>
-                      <p className="text-sm text-gray-600">Brain's power plants are failing</p>
-                    </div>
+                  </div>
+                  <h4 className="font-medium text-gray-800 mb-2">Your Problem</h4>
+                  <p className="text-sm text-gray-600">Brain's power plants are failing</p>
+                </div>
 
                     <div className="text-center">
                       <div className="w-16 h-16 bg-gradient-to-r from-blue-100 to-blue-200 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span className="text-2xl">⚡</span>
-                      </div>
-                      <h4 className="font-medium text-gray-800 mb-2">The Solution</h4>
-                      <p className="text-sm text-gray-600">MB acts as backup generator</p>
-                    </div>
+                  </div>
+                  <h4 className="font-medium text-gray-800 mb-2">The Solution</h4>
+                  <p className="text-sm text-gray-600">MB acts as backup generator</p>
+                </div>
 
                     <div className="text-center">
                       <div className="w-16 h-16 bg-gradient-to-r from-green-100 to-green-200 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span className="text-2xl">🧠</span>
-                      </div>
-                      <h4 className="font-medium text-gray-800 mb-2">The Result</h4>
-                      <p className="text-sm text-gray-600">Brain gets energy, fog lifts</p>
-                    </div>
                   </div>
+                  <h4 className="font-medium text-gray-800 mb-2">The Result</h4>
+                  <p className="text-sm text-gray-600">Brain gets energy, fog lifts</p>
                 </div>
+              </div>
+            </div>
               )}
             </div>
 
@@ -1092,7 +1105,7 @@ const MethyleneBlueQuiz = () => {
                             >
                               <button className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-bold py-3 sm:py-4 px-4 sm:px-8 rounded-xl text-lg sm:text-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                                 ✅ YES - Claim My 50% OFF (Limited Time) →
-                              </button>
+              </button>
                             </a>
               
               {/* Low Stock Warning */}

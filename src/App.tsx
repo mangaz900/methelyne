@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const MethyleneBlueQuiz = () => {
   const [currentStep, setCurrentStep] = useState('hero');
@@ -13,6 +13,16 @@ const MethyleneBlueQuiz = () => {
   });
   const [showNoThanksPopup, setShowNoThanksPopup] = useState(false);
   const [showBlogBridge, setShowBlogBridge] = useState(false);
+
+  // Reset focus when question changes to prevent buttons from appearing selected
+  useEffect(() => {
+    if (currentStep === 'quiz') {
+      // Remove focus from any previously focused element
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+    }
+  }, [questionIndex, currentStep]);
 
   // Google Analytics 4 Tracking
   const GA_TRACKING_ID = 'G-2BBJQ12KZN';
@@ -618,18 +628,18 @@ const MethyleneBlueQuiz = () => {
 
             {/* Severity Indicator */}
             <div className="mb-8">
-              <div className="flex items-center justify-center mb-6">
-                <div className="flex items-center space-x-4">
-                                      <div
-                      className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-1000 ${
-                        severity === 'VERY BAD'
-                          ? 'bg-red-500'
-                          : severity === 'BAD'
-                          ? 'bg-orange-400'
-                          : 'bg-yellow-400'
-                      }`}
-                    >
-                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <div className="text-center mb-6">
+                <div className="flex justify-center mb-3">
+                  <div
+                    className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-1000 ${
+                      severity === 'VERY BAD'
+                        ? 'bg-red-500'
+                        : severity === 'BAD'
+                        ? 'bg-orange-400'
+                        : 'bg-yellow-400'
+                    }`}
+                  >
+                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path
                         fillRule="evenodd"
                         d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
@@ -637,28 +647,28 @@ const MethyleneBlueQuiz = () => {
                       />
                     </svg>
                   </div>
-
-                  <div className="text-center">
-                    <h2
-                      className={`text-xl md:text-2xl font-bold ${
-                        severity === 'VERY BAD'
-                          ? 'text-red-500'
-                          : severity === 'BAD'
-                          ? 'text-orange-500'
-                          : 'text-yellow-600'
-                      }`}
-                    >
-                      {severity} BRAIN PROBLEM
-                    </h2>
-                    <p className="text-gray-600 text-sm">
-                      {severity === 'VERY BAD'
-                        ? 'Urgent intervention needed'
-                        : severity === 'BAD'
-                        ? 'Serious but fixable'
-                        : 'Manageable with right approach'}
-                    </p>
-                  </div>
                 </div>
+
+                <h2
+                  className={`text-xl md:text-2xl font-bold ${
+                    severity === 'VERY BAD'
+                      ? 'text-red-500'
+                      : severity === 'BAD'
+                      ? 'text-orange-500'
+                      : 'text-yellow-600'
+                  }`}
+                >
+                  {severity}
+                </h2>
+                <p className="text-gray-600 text-sm">
+                  {severity === 'VERY BAD'
+                    ? 'Urgent intervention needed'
+                    : severity === 'BAD'
+                    ? 'Serious but fixable'
+                    : severity === 'NOT GOOD'
+                    ? 'Manageable with right approach - but can get much worse if not treated'
+                    : 'Can get much worse if not treated - act now while it\'s still easy to fix'}
+                </p>
               </div>
 
               {/* Stats Cards */}
@@ -1183,7 +1193,7 @@ const MethyleneBlueQuiz = () => {
                     <button
                       key={index}
                       onClick={() => handleAnswer((currentQuestion as any).id, option)}
-                      className="w-full text-left p-4 sm:p-6 rounded-2xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 bg-white shadow-sm hover:shadow-md"
+                      className="w-full text-left p-4 sm:p-6 rounded-2xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 transform hover:scale-105 bg-white shadow-sm hover:shadow-md"
                     >
                       <span className="text-gray-800 font-medium text-base sm:text-lg">{option}</span>
                     </button>
